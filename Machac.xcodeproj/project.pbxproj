@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD350E6A197E842A008F204F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E69197E842A008F204F /* Foundation.framework */; };
+		AD350E6C197E842A008F204F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E6B197E842A008F204F /* CoreGraphics.framework */; };
+		AD350E6E197E842A008F204F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E6D197E842A008F204F /* UIKit.framework */; };
+		AD350E70197E842A008F204F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E6F197E842A008F204F /* CoreData.framework */; };
+		AD350E76197E842A008F204F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD350E74197E842A008F204F /* InfoPlist.strings */; };
+		AD350E78197E842A008F204F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350E77197E842A008F204F /* main.m */; };
+		AD350E7C197E842A008F204F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350E7B197E842A008F204F /* AppDelegate.m */; };
+		AD350E7F197E842A008F204F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD350E7D197E842A008F204F /* Main.storyboard */; };
+		AD350E82197E842A008F204F /* Machac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD350E80197E842A008F204F /* Machac.xcdatamodeld */; };
+		AD350E85197E842A008F204F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350E84197E842A008F204F /* MasterViewController.m */; };
+		AD350E88197E842A008F204F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350E87197E842A008F204F /* DetailViewController.m */; };
+		AD350E8A197E842A008F204F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD350E89197E842A008F204F /* Images.xcassets */; };
+		AD350E91197E842A008F204F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E90197E842A008F204F /* XCTest.framework */; };
+		AD350E92197E842A008F204F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E69197E842A008F204F /* Foundation.framework */; };
+		AD350E93197E842A008F204F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E6D197E842A008F204F /* UIKit.framework */; };
+		AD350E94197E842A008F204F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD350E6F197E842A008F204F /* CoreData.framework */; };
+		AD350E9C197E842A008F204F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD350E9A197E842A008F204F /* InfoPlist.strings */; };
+		AD350E9E197E842A008F204F /* MachacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350E9D197E842A008F204F /* MachacTests.m */; };
+		AD350EAF197E902F008F204F /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EAE197E902F008F204F /* Fraction.m */; };
+		AD350EB2197E902F008F204F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EB1197E902F008F204F /* Person.m */; };
+		AD350EB5197E9030008F204F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EB4197E9030008F204F /* Item.m */; };
+		AD350EB8197E9070008F204F /* DebtListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EB7197E9070008F204F /* DebtListViewController.m */; };
+		AD350EBB197E93E4008F204F /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EBA197E93E4008F204F /* ListCell.m */; };
+		AD350EBE197E9D48008F204F /* ItemManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EBD197E9D48008F204F /* ItemManagerViewController.m */; };
+		AD350EC1197EBB3E008F204F /* FractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EC0197EBB3E008F204F /* FractionViewController.m */; };
+		AD350EC4197EBE9D008F204F /* NewFractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EC3197EBE9D008F204F /* NewFractionViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD350E95197E842A008F204F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD350E5E197E842A008F204F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD350E65197E842A008F204F;
+			remoteInfo = Machac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADE632B61A96271A00DA9D01 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADE632FF1A963ABF00DA9D01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AD350E66197E842A008F204F /* Machac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD350E69197E842A008F204F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AD350E6B197E842A008F204F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AD350E6D197E842A008F204F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD350E6F197E842A008F204F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AD350E73197E842A008F204F /* Machac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Machac-Info.plist"; sourceTree = "<group>"; };
+		AD350E75197E842A008F204F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD350E77197E842A008F204F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD350E79197E842A008F204F /* Machac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Machac-Prefix.pch"; sourceTree = "<group>"; };
+		AD350E7A197E842A008F204F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD350E7B197E842A008F204F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD350E7E197E842A008F204F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD350E81197E842A008F204F /* Machac.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Machac.xcdatamodel; sourceTree = "<group>"; };
+		AD350E83197E842A008F204F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		AD350E84197E842A008F204F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		AD350E86197E842A008F204F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		AD350E87197E842A008F204F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		AD350E89197E842A008F204F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AD350E8F197E842A008F204F /* MachacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD350E90197E842A008F204F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		AD350E99197E842A008F204F /* MachacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MachacTests-Info.plist"; sourceTree = "<group>"; };
+		AD350E9B197E842A008F204F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD350E9D197E842A008F204F /* MachacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MachacTests.m; sourceTree = "<group>"; };
+		AD350EAD197E902F008F204F /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
+		AD350EAE197E902F008F204F /* Fraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fraction.m; sourceTree = "<group>"; };
+		AD350EB0197E902F008F204F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		AD350EB1197E902F008F204F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		AD350EB3197E9030008F204F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		AD350EB4197E9030008F204F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		AD350EB6197E9070008F204F /* DebtListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebtListViewController.h; sourceTree = "<group>"; };
+		AD350EB7197E9070008F204F /* DebtListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebtListViewController.m; sourceTree = "<group>"; };
+		AD350EB9197E93E4008F204F /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		AD350EBA197E93E4008F204F /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		AD350EBC197E9D48008F204F /* ItemManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagerViewController.h; sourceTree = "<group>"; };
+		AD350EBD197E9D48008F204F /* ItemManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemManagerViewController.m; sourceTree = "<group>"; };
+		AD350EBF197EBB3E008F204F /* FractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FractionViewController.h; sourceTree = "<group>"; };
+		AD350EC0197EBB3E008F204F /* FractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FractionViewController.m; sourceTree = "<group>"; };
+		AD350EC2197EBE9D008F204F /* NewFractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFractionViewController.h; sourceTree = "<group>"; };
+		AD350EC3197EBE9D008F204F /* NewFractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFractionViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD350E63197E842A008F204F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350E6C197E842A008F204F /* CoreGraphics.framework in Frameworks */,
+				AD350E70197E842A008F204F /* CoreData.framework in Frameworks */,
+				AD350E6E197E842A008F204F /* UIKit.framework in Frameworks */,
+				AD350E6A197E842A008F204F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD350E8C197E842A008F204F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350E91197E842A008F204F /* XCTest.framework in Frameworks */,
+				AD350E94197E842A008F204F /* CoreData.framework in Frameworks */,
+				AD350E93197E842A008F204F /* UIKit.framework in Frameworks */,
+				AD350E92197E842A008F204F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD350E5D197E842A008F204F = {
+			isa = PBXGroup;
+			children = (
+				AD350E71197E842A008F204F /* Machac */,
+				AD350E97197E842A008F204F /* MachacTests */,
+				AD350E68197E842A008F204F /* Frameworks */,
+				AD350E67197E842A008F204F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD350E67197E842A008F204F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E66197E842A008F204F /* Machac.app */,
+				AD350E8F197E842A008F204F /* MachacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD350E68197E842A008F204F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E69197E842A008F204F /* Foundation.framework */,
+				AD350E6B197E842A008F204F /* CoreGraphics.framework */,
+				AD350E6D197E842A008F204F /* UIKit.framework */,
+				AD350E6F197E842A008F204F /* CoreData.framework */,
+				AD350E90197E842A008F204F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD350E71197E842A008F204F /* Machac */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E7A197E842A008F204F /* AppDelegate.h */,
+				AD350E7B197E842A008F204F /* AppDelegate.m */,
+				AD350E7D197E842A008F204F /* Main.storyboard */,
+				AD350E83197E842A008F204F /* MasterViewController.h */,
+				AD350E84197E842A008F204F /* MasterViewController.m */,
+				AD350E86197E842A008F204F /* DetailViewController.h */,
+				AD350E87197E842A008F204F /* DetailViewController.m */,
+				AD350E89197E842A008F204F /* Images.xcassets */,
+				AD350E80197E842A008F204F /* Machac.xcdatamodeld */,
+				AD350E72197E842A008F204F /* Supporting Files */,
+				AD350EB0197E902F008F204F /* Person.h */,
+				AD350EB1197E902F008F204F /* Person.m */,
+				AD350EB3197E9030008F204F /* Item.h */,
+				AD350EB4197E9030008F204F /* Item.m */,
+				AD350EAD197E902F008F204F /* Fraction.h */,
+				AD350EAE197E902F008F204F /* Fraction.m */,
+				AD350EB6197E9070008F204F /* DebtListViewController.h */,
+				AD350EB7197E9070008F204F /* DebtListViewController.m */,
+				AD350EB9197E93E4008F204F /* ListCell.h */,
+				AD350EBA197E93E4008F204F /* ListCell.m */,
+				AD350EBC197E9D48008F204F /* ItemManagerViewController.h */,
+				AD350EBD197E9D48008F204F /* ItemManagerViewController.m */,
+				AD350EBF197EBB3E008F204F /* FractionViewController.h */,
+				AD350EC0197EBB3E008F204F /* FractionViewController.m */,
+				AD350EC2197EBE9D008F204F /* NewFractionViewController.h */,
+				AD350EC3197EBE9D008F204F /* NewFractionViewController.m */,
+			);
+			path = Machac;
+			sourceTree = "<group>";
+		};
+		AD350E72197E842A008F204F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E73197E842A008F204F /* Machac-Info.plist */,
+				AD350E74197E842A008F204F /* InfoPlist.strings */,
+				AD350E77197E842A008F204F /* main.m */,
+				AD350E79197E842A008F204F /* Machac-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD350E97197E842A008F204F /* MachacTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E9D197E842A008F204F /* MachacTests.m */,
+				AD350E98197E842A008F204F /* Supporting Files */,
+			);
+			path = MachacTests;
+			sourceTree = "<group>";
+		};
+		AD350E98197E842A008F204F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD350E99197E842A008F204F /* MachacTests-Info.plist */,
+				AD350E9A197E842A008F204F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD350E65197E842A008F204F /* Machac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD350EA1197E842A008F204F /* Build configuration list for PBXNativeTarget "Machac" */;
+			buildPhases = (
+				AD350E62197E842A008F204F /* Sources */,
+				AD350E63197E842A008F204F /* Frameworks */,
+				AD350E64197E842A008F204F /* Resources */,
+				ADE632B61A96271A00DA9D01 /* Embed App Extensions */,
+				ADE632FF1A963ABF00DA9D01 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Machac;
+			productName = Machac;
+			productReference = AD350E66197E842A008F204F /* Machac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD350E8E197E842A008F204F /* MachacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD350EA4197E842A008F204F /* Build configuration list for PBXNativeTarget "MachacTests" */;
+			buildPhases = (
+				AD350E8B197E842A008F204F /* Sources */,
+				AD350E8C197E842A008F204F /* Frameworks */,
+				AD350E8D197E842A008F204F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD350E96197E842A008F204F /* PBXTargetDependency */,
+			);
+			name = MachacTests;
+			productName = MachacTests;
+			productReference = AD350E8F197E842A008F204F /* MachacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD350E5E197E842A008F204F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "___FULLUSERNAME___";
+				TargetAttributes = {
+					AD350E8E197E842A008F204F = {
+						TestTargetID = AD350E65197E842A008F204F;
+					};
+				};
+			};
+			buildConfigurationList = AD350E61197E842A008F204F /* Build configuration list for PBXProject "Machac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD350E5D197E842A008F204F;
+			productRefGroup = AD350E67197E842A008F204F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD350E65197E842A008F204F /* Machac */,
+				AD350E8E197E842A008F204F /* MachacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD350E64197E842A008F204F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350E8A197E842A008F204F /* Images.xcassets in Resources */,
+				AD350E76197E842A008F204F /* InfoPlist.strings in Resources */,
+				AD350E7F197E842A008F204F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD350E8D197E842A008F204F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350E9C197E842A008F204F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD350E62197E842A008F204F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350EB5197E9030008F204F /* Item.m in Sources */,
+				AD350E88197E842A008F204F /* DetailViewController.m in Sources */,
+				AD350E85197E842A008F204F /* MasterViewController.m in Sources */,
+				AD350EC4197EBE9D008F204F /* NewFractionViewController.m in Sources */,
+				AD350EBB197E93E4008F204F /* ListCell.m in Sources */,
+				AD350EB2197E902F008F204F /* Person.m in Sources */,
+				AD350EBE197E9D48008F204F /* ItemManagerViewController.m in Sources */,
+				AD350EAF197E902F008F204F /* Fraction.m in Sources */,
+				AD350E7C197E842A008F204F /* AppDelegate.m in Sources */,
+				AD350EC1197EBB3E008F204F /* FractionViewController.m in Sources */,
+				AD350E78197E842A008F204F /* main.m in Sources */,
+				AD350E82197E842A008F204F /* Machac.xcdatamodeld in Sources */,
+				AD350EB8197E9070008F204F /* DebtListViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD350E8B197E842A008F204F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD350E9E197E842A008F204F /* MachacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD350E96197E842A008F204F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD350E65197E842A008F204F /* Machac */;
+			targetProxy = AD350E95197E842A008F204F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD350E74197E842A008F204F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD350E75197E842A008F204F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD350E7D197E842A008F204F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD350E7E197E842A008F204F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD350E9A197E842A008F204F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD350E9B197E842A008F204F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD350E9F197E842A008F204F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AD350EA0197E842A008F204F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD350EA2197E842A008F204F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
+				INFOPLIST_FILE = "Machac/Machac-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AD350EA3197E842A008F204F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
+				INFOPLIST_FILE = "Machac/Machac-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AD350EA5197E842A008F204F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Machac.app/Machac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MachacTests/MachacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		AD350EA6197E842A008F204F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Machac.app/Machac";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
+				INFOPLIST_FILE = "MachacTests/MachacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD350E61197E842A008F204F /* Build configuration list for PBXProject "Machac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD350E9F197E842A008F204F /* Debug */,
+				AD350EA0197E842A008F204F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD350EA1197E842A008F204F /* Build configuration list for PBXNativeTarget "Machac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD350EA2197E842A008F204F /* Debug */,
+				AD350EA3197E842A008F204F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD350EA4197E842A008F204F /* Build configuration list for PBXNativeTarget "MachacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD350EA5197E842A008F204F /* Debug */,
+				AD350EA6197E842A008F204F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AD350E80197E842A008F204F /* Machac.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AD350E81197E842A008F204F /* Machac.xcdatamodel */,
+			);
+			currentVersion = AD350E81197E842A008F204F /* Machac.xcdatamodel */;
+			path = Machac.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AD350E5E197E842A008F204F /* Project object */;
+}
