@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
 
 typedef enum {
     ListTypeDebt,
@@ -15,6 +16,6 @@ typedef enum {
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Person* person;
 
 @end

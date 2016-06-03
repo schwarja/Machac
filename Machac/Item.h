@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic) float value;
-@property (nonatomic, retain) Fraction *debtor;
+@property (nonatomic, retain) NSSet *debtor;
 @property (nonatomic, retain) Person *owner;
 
 @end

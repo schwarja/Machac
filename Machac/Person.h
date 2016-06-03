@@ -30,4 +30,6 @@
 - (void)addAcquisitions:(NSSet *)values;
 - (void)removeAcquisitions:(NSSet *)values;
 
++ (NSArray*)getAllPeople;
+
 @end
