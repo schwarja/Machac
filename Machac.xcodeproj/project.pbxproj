@@ -33,6 +33,7 @@
 		AD350EBE197E9D48008F204F /* ItemManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EBD197E9D48008F204F /* ItemManagerViewController.m */; };
 		AD350EC1197EBB3E008F204F /* FractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EC0197EBB3E008F204F /* FractionViewController.m */; };
 		AD350EC4197EBE9D008F204F /* NewFractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD350EC3197EBE9D008F204F /* NewFractionViewController.m */; };
+		AD8716831DCDD62B009C2FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8716821DCDD62B009C2FB6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		AD350EC0197EBB3E008F204F /* FractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FractionViewController.m; sourceTree = "<group>"; };
 		AD350EC2197EBE9D008F204F /* NewFractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFractionViewController.h; sourceTree = "<group>"; };
 		AD350EC3197EBE9D008F204F /* NewFractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFractionViewController.m; sourceTree = "<group>"; };
+		AD8716821DCDD62B009C2FB6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				AD350EC0197EBB3E008F204F /* FractionViewController.m */,
 				AD350EC2197EBE9D008F204F /* NewFractionViewController.h */,
 				AD350EC3197EBE9D008F204F /* NewFractionViewController.m */,
+				AD8716821DCDD62B009C2FB6 /* LaunchScreen.storyboard */,
 			);
 			path = Machac;
 			sourceTree = "<group>";
@@ -278,6 +281,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					AD350E65197E842A008F204F = {
+						DevelopmentTeam = AV29J8RAE8;
+					};
 					AD350E8E197E842A008F204F = {
 						TestTargetID = AD350E65197E842A008F204F;
 					};
@@ -308,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD350E8A197E842A008F204F /* Images.xcassets in Resources */,
+				AD8716831DCDD62B009C2FB6 /* LaunchScreen.storyboard in Resources */,
 				AD350E76197E842A008F204F /* InfoPlist.strings in Resources */,
 				AD350E7F197E842A008F204F /* Main.storyboard in Resources */,
 			);
@@ -465,7 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AV29J8RAE8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
 				INFOPLIST_FILE = "Machac/Machac-Info.plist";
@@ -481,7 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AV29J8RAE8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Machac/Machac-Prefix.pch";
 				INFOPLIST_FILE = "Machac/Machac-Info.plist";
