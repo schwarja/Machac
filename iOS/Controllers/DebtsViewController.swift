@@ -14,13 +14,15 @@ class DebtsViewController: UITableViewController {
     let claimer: Person
     let debtor: Person
     
-    let ratios: Results<Ratio>
-    
+    let debts: Results<Ratio>
+    let claims: Results<Ratio>
+
     init(claimer: Person, debtor: Person) {
         self.claimer = claimer
         self.debtor = debtor
-        self.ratios = RealmManager.shared.ratios(ownedBy: claimer, consumedBy: debtor)
-        
+        self.claims = RealmManager.shared.ratios(ownedBy: claimer, consumedBy: debtor)
+        self.debts = RealmManager.shared.ratios(ownedBy: debtor, consumedBy: claimer)
+
         super.init(style: .grouped)
     }
     
@@ -37,18 +39,37 @@ class DebtsViewController: UITableViewController {
     // MARK: TableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ratios.count
+        switch section {
+        case 0:
+            return claims.count
+            
+        case 1:
+            return debts.count
+            
+        default:
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NameValueCell.reuseIdentifier, for: indexPath)
         cell.selectionStyle = .none
         
-        let ratio = ratios[indexPath.row]
+        let ratio: Ratio
+        switch indexPath.section {
+        case 0:
+            ratio = claims[indexPath.row]
+            
+        case 1:
+            ratio = debts[indexPath.row]
+            
+        default:
+            return cell
+        }
         cell.textLabel?.text = ratio.item?.name
         
         let currency = AppSettings.shared.referenceCurrency
@@ -56,6 +77,20 @@ class DebtsViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(String(format: "%.2f", owes)) \(currency.code)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let currency = AppSettings.shared.referenceCurrency
+        switch section {
+        case 0:
+            return "\(debtor.name) consumed \(String(format: "%.2f", debtor.consumedFrom(person: claimer))) \(currency.code)"
+            
+        case 1:
+            return "\(debtor.name) payed \(String(format: "%.2f", debtor.payedFor(person: claimer))) \(currency.code)"
+            
+        default:
+            return nil
+        }
     }
     
 }

@@ -17,14 +17,14 @@ class Person: Object {
     let ratios = LinkingObjects(fromType: Ratio.self, property: "debtor")
     
     var owes: Double {
-        let ratios = RealmManager.shared.ratios(consumedBy: self)
-        let sum = ratios.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        let people = RealmManager.shared.people(without: self)
+        let sum = people.map({ self.owesTo(person: $0) }).reduce(0, { $0 + $1 })
         return sum
     }
     
     var isOwedTo: Double {
-        let ratios = RealmManager.shared.ratios(ownedBy: self)
-        let sum = ratios.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        let people = RealmManager.shared.people(without: self)
+        let sum = people.map({ self.wantsFrom(person: $0) }).reduce(0, { $0 + $1 })
         return sum
     }
 
@@ -52,15 +52,27 @@ class Person: Object {
     }
     
     func owesTo(person: Person) -> Double {
-        let ratios = RealmManager.shared.ratios(ownedBy: person, consumedBy: self)
-        let sum = ratios.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
-        return sum
+        let minus = consumedFrom(person: person)
+        let plus = payedFor(person: person)
+        return max(0, minus - plus)
     }
     
     func wantsFrom(person: Person) -> Double {
-        let ratios = RealmManager.shared.ratios(ownedBy: self, consumedBy: person)
-        let sum = ratios.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
-        return sum
+        let minus = consumedFrom(person: person)
+        let plus = payedFor(person: person)
+        return max(0, plus - minus)
+    }
+    
+    func payedFor(person: Person) -> Double {
+        let claims = RealmManager.shared.ratios(ownedBy: self, consumedBy: person)
+        let plus = claims.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        return plus
+    }
+    
+    func consumedFrom(person: Person) -> Double {
+        let debts = RealmManager.shared.ratios(ownedBy: person, consumedBy: self)
+        let minus = debts.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        return minus
     }
 }
 

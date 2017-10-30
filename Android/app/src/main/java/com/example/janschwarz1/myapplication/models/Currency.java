@@ -1,5 +1,7 @@
 package com.example.janschwarz1.myapplication.models;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;

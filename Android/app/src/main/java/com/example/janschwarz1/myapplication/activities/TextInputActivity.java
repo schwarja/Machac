@@ -36,11 +36,23 @@ public class TextInputActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                done();
+                return true;
+        }
+    }
+
+    public void done() {
         int resultCode = input.getText().length() > 0 ? RESULT_OK : RESULT_CANCELED;
         Intent resultIntent = new Intent();
         resultIntent.putExtra(TextInputActivity.RESULT, input.getText().toString());
         setResult(resultCode, resultIntent);
         finish();
-        return true;
     }
 }

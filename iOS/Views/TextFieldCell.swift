@@ -47,6 +47,10 @@ extension TextFieldCell: UITextFieldDelegate {
         return true
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 internal extension TextFieldCell {

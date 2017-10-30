@@ -219,6 +219,7 @@ private extension ItemViewController {
         tableView.estimatedRowHeight = 6010
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
+        tableView.keyboardDismissMode = .onDrag
     }
     
     @objc func saveItem() {

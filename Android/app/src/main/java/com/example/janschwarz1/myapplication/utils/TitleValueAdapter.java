@@ -23,6 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.janschwarz1.myapplication.R;
+import com.example.janschwarz1.myapplication.models.TitleValueAdapterDataSource;
 import com.example.janschwarz1.myapplication.models.TitleValueAdapterItem;
 
 import java.util.HashSet;
@@ -39,24 +40,16 @@ public class TitleValueAdapter<T extends RealmObject & TitleValueAdapterItem> ex
         TextView valueText;
     }
 
-    private boolean inDeletionMode = false;
-    private Set<Integer> countersToDelete = new HashSet<Integer>();
     private LayoutInflater mInflater;
+    private TitleValueAdapterDataSource<T> dataSource;
 
     public TitleValueAdapter(OrderedRealmCollection<T> realmResults) {
         super(realmResults);
     }
 
-    void enableDeletionMode(boolean enabled) {
-        inDeletionMode = enabled;
-        if (!enabled) {
-            countersToDelete.clear();
-        }
-        notifyDataSetChanged();
-    }
-
-    Set<Integer> getCountersToDelete() {
-        return countersToDelete;
+    public TitleValueAdapter(OrderedRealmCollection<T> realmResults, TitleValueAdapterDataSource<T> dataSource) {
+        super(realmResults);
+        this.dataSource = dataSource;
     }
 
     @Override
@@ -75,8 +68,14 @@ public class TitleValueAdapter<T extends RealmObject & TitleValueAdapterItem> ex
 
         if (adapterData != null) {
             final T item = adapterData.get(position);
-            viewHolder.titleText.setText(item.getTitle());
-            viewHolder.valueText.setText(item.getValue());
+            if (dataSource == null) {
+                viewHolder.titleText.setText(item.getTitle());
+                viewHolder.valueText.setText(item.getValue());
+            }
+            else {
+                viewHolder.titleText.setText(dataSource.getTitleForItem(item));
+                viewHolder.valueText.setText(dataSource.getValueForItem(item));
+            }
         }
         return convertView;
     }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.janschwarz1.myapplication.activities.CurrencyActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/currencyCodeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Currency Code"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/currencyCodeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Currency Code" />
+
+            <TextView
+                android:id="@+id/currencyAmountCzkLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amount of CZK"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/currencyAmountCzkTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CZK value" />
+
+            <TextView
+                android:id="@+id/currencyAmountNewLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Equivalent to amount in the new currency"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/currencyAmountNewTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="New currecy value" />
+        </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

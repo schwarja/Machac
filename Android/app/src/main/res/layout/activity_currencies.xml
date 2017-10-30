@@ -9,7 +9,7 @@
     <ListView
         android:id="@+id/currenciesListView"
         android:layout_width="0dp"
-        android:layout_height="495dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -28,6 +28,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
         android:clickable="true"
+        android:onClick="addCurrency"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.janschwarz1.myapplication.R;
+import com.example.janschwarz1.myapplication.utils.AppSettings;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppSettings.shared.initialize();
     }
 
     public void showPeople(View view) {

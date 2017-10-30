@@ -8,40 +8,48 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.example.janschwarz1.myapplication.R;
+import com.example.janschwarz1.myapplication.models.Item;
 import com.example.janschwarz1.myapplication.models.Person;
 import com.example.janschwarz1.myapplication.utils.RealmManager;
 import com.example.janschwarz1.myapplication.utils.TitleValueAdapter;
 
 import io.realm.RealmResults;
 
-public class PeopleActivity extends AppCompatActivity {
+public class ItemsActivity extends AppCompatActivity {
 
+    public static String PERSON_ID = "com.example.janschwarz1.myapplication.activities.Items.ID";
+
+    private Person person;
     private ListView list;
-    private TitleValueAdapter<Person> adapter;
+    private TitleValueAdapter<Item> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_people);
-        setTitle("People");
+        setContentView(R.layout.activity_items);
 
-        list = (ListView) findViewById(R.id.peopleListView);
+        Intent intent = getIntent();
+        String personId = intent.getStringExtra(ItemsActivity.PERSON_ID);
+        person = RealmManager.shared.person(personId);
 
-        RealmResults<Person> people = RealmManager.shared.people();
-        adapter = new TitleValueAdapter(people);
+        setTitle("Items of " + person.getName());
+
+        list = (ListView) findViewById(R.id.itemsListView);
+
+        person = RealmManager.shared.person(personId);
+        adapter = new TitleValueAdapter(person.getItems());
         list.setAdapter(adapter);
 
-        list.setOnItemClickListener(new OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final Person person = adapter.getItem(position);
-                Intent intent = new Intent(PeopleActivity.this, PersonActivity.class);
-                intent.putExtra(PersonActivity.PERSON_ID, person.getId());
+                final Item item = adapter.getItem(position);
+                Intent intent = new Intent(ItemsActivity.this, ItemActivity.class);
+                intent.putExtra(ItemActivity.ITEM_ID, item.getId());
                 startActivity(intent);
             }
         });
@@ -49,14 +57,14 @@ public class PeopleActivity extends AppCompatActivity {
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final Person person = adapter.getItem(position);
-                AlertDialog alertDialog = new AlertDialog.Builder(PeopleActivity.this).create();
-                alertDialog.setTitle("Delete person");
-                alertDialog.setMessage("Do you really want to delete " + person.getName());
+                final Item item = adapter.getItem(position);
+                AlertDialog alertDialog = new AlertDialog.Builder(ItemsActivity.this).create();
+                alertDialog.setTitle("Delete item");
+                alertDialog.setMessage("Do you really want to delete " + item.getName());
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Delete",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                RealmManager.shared.remove(person);
+                                RealmManager.shared.remove(item);
                                 dialog.dismiss();
                             }
                         });
@@ -85,17 +93,10 @@ public class PeopleActivity extends AppCompatActivity {
         }
     }
 
-    public void addPerson(View view) {
-        Intent intent = new Intent(this, TextInputActivity.class);
-        startActivityForResult(intent, 0);
+    public void addItem(View view) {
+        Intent intent = new Intent(this, ItemActivity.class);
+        intent.putExtra(ItemActivity.PERSON_ID, person.getId());
+        startActivity(intent);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 0 && resultCode == RESULT_OK) {
-            String name = data.getStringExtra(TextInputActivity.RESULT);
-            Person person = new Person(name);
-            RealmManager.shared.write(person);
-        }
-    }
 }

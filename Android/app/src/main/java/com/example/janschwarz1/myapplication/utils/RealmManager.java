@@ -3,7 +3,11 @@ package com.example.janschwarz1.myapplication.utils;
 import android.content.Context;
 
 import com.example.janschwarz1.myapplication.models.Currency;
+import com.example.janschwarz1.myapplication.models.Item;
 import com.example.janschwarz1.myapplication.models.Person;
+import com.example.janschwarz1.myapplication.models.Ratio;
+
+import java.util.ArrayList;
 
 import io.realm.ObjectServerError;
 import io.realm.Realm;
@@ -61,20 +65,63 @@ public class RealmManager {
     public RealmResults<Person> people() {
         return realm.where(Person.class).findAllSorted("name");
     }
+
+    public RealmResults<Person> peopleWithout(Person[] people) {
+        ArrayList<String> ids = new ArrayList<String>();
+        for (Person p: people) {
+            ids.add(p.getId());
+        }
+        String[] simpleArray = new String[ ids.size() ];
+        ids.toArray(simpleArray);
+        return realm.where(Person.class).not().in("id", simpleArray).findAllSorted("name");
+    }
+
+    public Person person(String id) {
+        return realm.where(Person.class).equalTo("id", id).findFirst();
+    }
+
     public RealmResults<Currency> currencies() {
         return realm.where(Currency.class).findAllSorted("code");
+    }
+
+    public Currency currency(String code) {
+        if (code != null) {
+            return realm.where(Currency.class).equalTo("code", code).findFirst();
+        }
+        return null;
+    }
+
+    public Currency referenceCurrency() {
+        return realm.where(Currency.class).equalTo("isReference", true).findFirst();
+    }
+
+    public RealmResults<Item> itemsOf(Person person) {
+        return realm.where(Item.class).equalTo("owner.id", person.getId()).findAllSorted("name");
+    }
+
+    public RealmResults<Ratio> ratiosCosumedBy(Person person) {
+        return realm.where(Ratio.class).equalTo("debtor.id", person.getId()).findAll();
+    }
+
+    public RealmResults<Ratio> ratiosOwnedBy(Person person) {
+        return realm.where(Ratio.class).equalTo("item.owner.id", person.getId()).findAll();
+    }
+
+    public RealmResults<Ratio> ratios(Person owner, Person consumer) {
+        return realm.where(Ratio.class)
+                .equalTo("item.owner.id", owner.getId())
+                .equalTo("debtor.id", consumer.getId())
+                .findAllSorted("item.name");
     }
 
     public void write(RealmObject object) {
         realm.beginTransaction();
         try {
             realm.insertOrUpdate(object);
+            realm.commitTransaction();
         }
         catch (Exception ex) {
             realm.cancelTransaction();
-        }
-        finally {
-            realm.commitTransaction();
         }
     }
 
@@ -82,12 +129,10 @@ public class RealmManager {
         realm.beginTransaction();
         try {
             object.deleteFromRealm();
+            realm.commitTransaction();
         }
         catch (Exception ex) {
             realm.cancelTransaction();
-        }
-        finally {
-            realm.commitTransaction();
         }
     }
 }

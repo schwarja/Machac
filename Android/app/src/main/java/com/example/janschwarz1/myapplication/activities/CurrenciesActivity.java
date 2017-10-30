@@ -2,8 +2,10 @@ package com.example.janschwarz1.myapplication.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,6 +39,15 @@ public class CurrenciesActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Currency currency = adapter.getItem(position);
+
+                if (currency.getCode().equals(Currency.defaultCode)) {
+                    return;
+                }
+
+                Intent intent = new Intent(CurrenciesActivity.this, CurrencyActivity.class);
+                intent.putExtra(CurrencyActivity.CURRENCY_CODE, currency.getCode());
+                startActivity(intent);
             }
         });
 
@@ -45,12 +56,12 @@ public class CurrenciesActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 final Currency currency = adapter.getItem(position);
 
-                if (currency.getCode() == Currency.defaultCode) {
+                if (currency.getCode().equals(Currency.defaultCode)) {
                     return false;
                 }
 
                 AlertDialog alertDialog = new AlertDialog.Builder(CurrenciesActivity.this).create();
-                alertDialog.setTitle("Delete person");
+                alertDialog.setTitle("Delete currency");
                 alertDialog.setMessage("Do you really want to delete " + currency.getCode());
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Delete",
                         new DialogInterface.OnClickListener() {
@@ -70,5 +81,23 @@ public class CurrenciesActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void addCurrency(View view) {
+        Intent intent = new Intent(CurrenciesActivity.this, CurrencyActivity.class);
+        startActivity(intent);
     }
 }
