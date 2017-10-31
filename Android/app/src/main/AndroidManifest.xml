@@ -70,23 +70,39 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.ItemsActivity" />
         </activity>
-        <activity android:name=".activities.OwesActivity"
+        <activity
+            android:name=".activities.OwesActivity"
             android:parentActivityName=".activities.PersonActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PersonActivity" />
         </activity>
-        <activity android:name=".activities.IsOwedActivity"
+        <activity
+            android:name=".activities.IsOwedActivity"
             android:parentActivityName=".activities.PersonActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PersonActivity" />
         </activity>
-        <activity android:name=".activities.DebtsActivity"
+        <activity
+            android:name=".activities.DebtsActivity"
             android:parentActivityName=".activities.OwesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.OwesActivity" />
+        </activity>
+        <activity
+            android:name=".activities.RatioActivity"
+            android:parentActivityName=".activities.ItemActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ItemActivity" />
+        </activity>
+        <activity android:name=".activities.SelectOwnerActivity"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
         </activity>
     </application>
 

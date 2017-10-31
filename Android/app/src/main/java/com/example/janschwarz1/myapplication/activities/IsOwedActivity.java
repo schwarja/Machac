@@ -37,7 +37,7 @@ public class IsOwedActivity extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.isOwedListView);
 
-        RealmResults<Person> people = RealmManager.shared.peopleWithout(new Person[]{person});
+        RealmResults<Person> people = RealmManager.shared.peopleWithout(new String[]{person.getId()});
         adapter = new TitleValueAdapter(people, new IsOwedActivityDataSource(person));
         list.setAdapter(adapter);
 

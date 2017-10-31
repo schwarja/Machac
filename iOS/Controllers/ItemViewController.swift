@@ -18,8 +18,6 @@ class ItemViewController: UITableViewController {
     private var ratios: [Ratio]
     private var originalRatios: [Ratio]
     
-    let people: Results<Person>
-    
     let currencies = AppSettings.shared.currencies
     
     private var name = ""
@@ -27,8 +25,6 @@ class ItemViewController: UITableViewController {
     private var value: Double?
     
     init(item: Item, shouldDismiss: Bool = false) {
-        self.people = RealmManager.shared.people
-        
         self.shouldDismiss = shouldDismiss
         
         self.owner = item.owner!
@@ -48,8 +44,6 @@ class ItemViewController: UITableViewController {
     }
 
     init(person: Person, shouldDismiss: Bool = false) {
-        self.people = RealmManager.shared.person(withId: person.id)
-        
         self.shouldDismiss = shouldDismiss
 
         self.owner = person

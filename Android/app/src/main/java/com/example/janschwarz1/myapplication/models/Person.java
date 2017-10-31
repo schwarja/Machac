@@ -13,7 +13,7 @@ import java.util.UUID;
  * Created by janschwarz1 on 25/10/2017.
  */
 
-public class Person extends RealmObject implements TitleValueAdapterItem {
+public class Person extends RealmObject implements TitleValueAdapterItem, ItemWithCascadeDelete {
     @PrimaryKey@Required
     private String id;
     @Required
@@ -37,7 +37,7 @@ public class Person extends RealmObject implements TitleValueAdapterItem {
     }
 
     public Double owes() {
-        RealmResults<Person> people = RealmManager.shared.peopleWithout(new Person[]{this});
+        RealmResults<Person> people = RealmManager.shared.peopleWithout(new String[]{this.id});
         Double sum = 0.0;
         for (Person p: people) {
             sum += owesTo(p);
@@ -46,7 +46,7 @@ public class Person extends RealmObject implements TitleValueAdapterItem {
     }
 
     public Double isOwedTo() {
-        RealmResults<Person> people = RealmManager.shared.peopleWithout(new Person[]{this});
+        RealmResults<Person> people = RealmManager.shared.peopleWithout(new String[]{this.id});
         Double sum = 0.0;
         for (Person p: people) {
             sum += wantsFrom(p);
@@ -108,4 +108,15 @@ public class Person extends RealmObject implements TitleValueAdapterItem {
         return "";
     }
 
+    @Override
+    public void cascadeDelete() {
+        for (int i = ratios.size()-1; i >=0 ; i--) {
+            ratios.get(i).cascadeDelete();
+        }
+        for (int i = items.size()-1; i >=0 ; i--) {
+            items.get(i).cascadeDelete();
+        }
+
+        this.deleteFromRealm();
+    }
 }

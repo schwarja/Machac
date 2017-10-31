@@ -39,6 +39,7 @@ public class TextInputActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
+                setResult(RESULT_CANCELED);
                 finish();
                 return true;
 

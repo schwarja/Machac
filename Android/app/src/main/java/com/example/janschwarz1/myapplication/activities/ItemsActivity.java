@@ -39,7 +39,6 @@ public class ItemsActivity extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.itemsListView);
 
-        person = RealmManager.shared.person(personId);
         adapter = new TitleValueAdapter(person.getItems());
         list.setAdapter(adapter);
 

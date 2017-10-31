@@ -43,7 +43,7 @@ public class OwesActivity extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.owesListView);
 
-        RealmResults<Person> people = RealmManager.shared.peopleWithout(new Person[]{person});
+        RealmResults<Person> people = RealmManager.shared.peopleWithout(new String[]{person.getId()});
         adapter = new TitleValueAdapter(people, new OwesActivityDataSource(person));
         list.setAdapter(adapter);
 

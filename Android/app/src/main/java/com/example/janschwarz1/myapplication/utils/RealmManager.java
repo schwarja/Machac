@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.janschwarz1.myapplication.models.Currency;
 import com.example.janschwarz1.myapplication.models.Item;
+import com.example.janschwarz1.myapplication.models.ItemWithCascadeDelete;
 import com.example.janschwarz1.myapplication.models.Person;
 import com.example.janschwarz1.myapplication.models.Ratio;
 
@@ -25,7 +26,13 @@ public class RealmManager {
 
     public static RealmManager shared = new RealmManager();
 
-    private Realm realm;
+    public interface ChangeListener {
+        void onChange();
+    }
+
+    private ChangeListener listener;
+
+    public Realm realm;
 
     public void initialize(Context context) {
         try {
@@ -60,20 +67,29 @@ public class RealmManager {
                 .build();
         // Use the config
         realm = Realm.getInstance(config);
+        if (listener != null) {
+            listener.onChange();
+        }
+    }
+
+    public ChangeListener getListener() {
+        return listener;
+    }
+
+    public void setListener(ChangeListener listener) {
+        this.listener = listener;
     }
 
     public RealmResults<Person> people() {
         return realm.where(Person.class).findAllSorted("name");
     }
 
-    public RealmResults<Person> peopleWithout(Person[] people) {
-        ArrayList<String> ids = new ArrayList<String>();
-        for (Person p: people) {
-            ids.add(p.getId());
-        }
-        String[] simpleArray = new String[ ids.size() ];
-        ids.toArray(simpleArray);
-        return realm.where(Person.class).not().in("id", simpleArray).findAllSorted("name");
+    public RealmResults<Person> peopleWithout(String[] ids) {
+        return realm.where(Person.class).not().in("id", ids).findAllSorted("name");
+    }
+
+    public RealmResults<Person> peopleWith(String[] ids) {
+        return realm.where(Person.class).in("id", ids).findAllSorted("name");
     }
 
     public Person person(String id) {
@@ -114,6 +130,22 @@ public class RealmManager {
                 .findAllSorted("item.name");
     }
 
+    public RealmResults<Ratio> ratiosOfItem(Item item) {
+        return realm.where(Ratio.class).equalTo("item.id", item.getId()).findAll();
+    }
+
+    public Ratio ratio(String id) {
+        return realm.where(Ratio.class).equalTo("id", id).findFirst();
+    }
+
+    public Item item(String id) {
+        return realm.where(Item.class).equalTo("id", id).findFirst();
+    }
+
+    public RealmResults<Item> itemsInCurrency(Currency cur) {
+        return realm.where(Item.class).equalTo("currency.code", cur.getCode()).findAll();
+    }
+
     public void write(RealmObject object) {
         realm.beginTransaction();
         try {
@@ -125,10 +157,10 @@ public class RealmManager {
         }
     }
 
-    public void remove(RealmObject object) {
+    public <T extends RealmObject & ItemWithCascadeDelete> void remove(T object) {
         realm.beginTransaction();
         try {
-            object.deleteFromRealm();
+            object.cascadeDelete();
             realm.commitTransaction();
         }
         catch (Exception ex) {

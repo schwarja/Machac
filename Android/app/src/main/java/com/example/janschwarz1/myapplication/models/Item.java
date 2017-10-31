@@ -14,7 +14,7 @@ import io.realm.annotations.Required;
  * Created by janschwarz1 on 27/10/2017.
  */
 
-public class Item extends RealmObject implements TitleValueAdapterItem {
+public class Item extends RealmObject implements TitleValueAdapterItem, ItemWithCascadeDelete {
     @PrimaryKey@Required
     private String id;
     @Required
@@ -27,7 +27,7 @@ public class Item extends RealmObject implements TitleValueAdapterItem {
     private final RealmResults<Ratio> ratios = null;
 
     public Item() {
-
+        this.id = UUID.randomUUID().toString();
     }
 
     public Item(String name, Person owner, Double valueInCurrency, Currency currency) {
@@ -83,5 +83,14 @@ public class Item extends RealmObject implements TitleValueAdapterItem {
     @Override
     public String getValue() {
         return "";
+    }
+
+    @Override
+    public void cascadeDelete() {
+        for (int i = ratios.size()-1; i >=0 ; i--) {
+            ratios.get(i).cascadeDelete();
+        }
+
+        this.deleteFromRealm();
     }
 }

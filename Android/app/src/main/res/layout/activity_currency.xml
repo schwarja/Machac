@@ -47,7 +47,8 @@
                 android:id="@+id/currencyAmountCzkTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CZK value" />
+                android:hint="CZK value"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/currencyAmountNewLabel"
@@ -60,7 +61,8 @@
                 android:id="@+id/currencyAmountNewTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="New currecy value" />
+                android:hint="New currecy value"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
     </ScrollView>

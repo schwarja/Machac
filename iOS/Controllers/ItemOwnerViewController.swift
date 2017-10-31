@@ -89,6 +89,8 @@ private extension ItemOwnerViewController {
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
+        
+        owner = people.first
     }
     
     @objc func selectOwner() {

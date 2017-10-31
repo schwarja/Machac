@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.example.janschwarz1.myapplication.R;
 import com.example.janschwarz1.myapplication.models.Currency;
 import com.example.janschwarz1.myapplication.models.Person;
+import com.example.janschwarz1.myapplication.utils.AppSettings;
 import com.example.janschwarz1.myapplication.utils.RealmManager;
 import com.example.janschwarz1.myapplication.utils.TitleValueAdapter;
 
@@ -41,7 +42,10 @@ public class CurrenciesActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Currency currency = adapter.getItem(position);
 
-                if (currency.getCode().equals(Currency.defaultCode)) {
+                if (currency.isDefault()) {
+                    return;
+                }
+                if (currency.getCode().equals(AppSettings.shared.getReferenceCurrency().getCode())) {
                     return;
                 }
 
@@ -56,7 +60,10 @@ public class CurrenciesActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 final Currency currency = adapter.getItem(position);
 
-                if (currency.getCode().equals(Currency.defaultCode)) {
+                if (currency.isDefault()) {
+                    return false;
+                }
+                if (currency.getCode().equals(AppSettings.shared.getReferenceCurrency().getCode())) {
                     return false;
                 }
 

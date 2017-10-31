@@ -10,7 +10,7 @@ import io.realm.annotations.Required;
  * Created by janschwarz1 on 27/10/2017.
  */
 
-public class Ratio extends RealmObject implements TitleValueAdapterItem {
+public class Ratio extends RealmObject implements TitleValueAdapterItem, ItemWithCascadeDelete {
     @PrimaryKey@Required
     private String id;
     @Required
@@ -57,5 +57,10 @@ public class Ratio extends RealmObject implements TitleValueAdapterItem {
     @Override
     public String getValue() {
         return String.format( "%.2f", ratio);
+    }
+
+    @Override
+    public void cascadeDelete() {
+        this.deleteFromRealm();
     }
 }
