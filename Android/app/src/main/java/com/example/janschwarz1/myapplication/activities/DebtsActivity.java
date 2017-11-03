@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.example.janschwarz1.myapplication.R;
 import com.example.janschwarz1.myapplication.models.Person;
@@ -18,6 +19,7 @@ import com.example.janschwarz1.myapplication.utils.AppSettings;
 import com.example.janschwarz1.myapplication.utils.RealmManager;
 import com.example.janschwarz1.myapplication.utils.TitleValueAdapter;
 
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
 public class DebtsActivity extends AppCompatActivity {
@@ -25,10 +27,15 @@ public class DebtsActivity extends AppCompatActivity {
     public static String PERSON_ID = "com.example.janschwarz1.myapplication.activities.Debts.PERSON_ID";
     public static String OWES_TO_ID = "com.example.janschwarz1.myapplication.activities.Debts.OWES_ID";
 
+    private RealmResults<Ratio> debts;
+    private RealmResults<Ratio> claims;
     private Person person;
     private Person owesToPerson;
     private ListView debtsList;
     private ListView claimsList;
+    private TabHost tabHost;
+    private TabHost.TabSpec debtsSpec;
+    private TabHost.TabSpec claimsSpec;
     private TitleValueAdapter<Ratio> debtsAdapter;
     private TitleValueAdapter<Ratio> claimsAdapter;
 
@@ -45,31 +52,55 @@ public class DebtsActivity extends AppCompatActivity {
 
         setTitle(person.getName() + " owes to " + owesToPerson.getName());
 
-        TabHost host = (TabHost)findViewById(R.id.debtsTabHost);
-        host.setup();
+        tabHost = (TabHost)findViewById(R.id.debtsTabHost);
+        tabHost.setup();
 
         //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("tab1");
-        spec.setContent(R.id.debtsTab1);
-        spec.setIndicator(person.getName() + " consumed " + String.format( "%.2f", person.consumedFrom(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
-        host.addTab(spec);
+        debtsSpec = tabHost.newTabSpec("tab1");
+        debtsSpec.setContent(R.id.debtsTab1);
+        debtsSpec.setIndicator(person.getName() + " consumed " + String.format( "%.2f", person.consumedFrom(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
+        tabHost.addTab(debtsSpec);
 
         //Tab 2
-        spec = host.newTabSpec("tab2");
-        spec.setContent(R.id.debtsTab2);
-        spec.setIndicator(person.getName() + " payed " + String.format( "%.2f", person.payedFor(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
-        host.addTab(spec);
+        claimsSpec = tabHost.newTabSpec("tab2");
+        claimsSpec.setContent(R.id.debtsTab2);
+        claimsSpec.setIndicator(person.getName() + " payed " + String.format( "%.2f", person.payedFor(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
+        tabHost.addTab(claimsSpec);
 
         debtsList = (ListView) findViewById(R.id.debtsListViewDebts);
         claimsList = (ListView) findViewById(R.id.debtsListViewClaims);
 
-        RealmResults<Ratio> debts = RealmManager.shared.ratios(owesToPerson, person);
+        debts = RealmManager.shared.ratios(owesToPerson, person);
         debtsAdapter = new TitleValueAdapter(debts, new DebtsActivityDataSource());
         debtsList.setAdapter(debtsAdapter);
 
-        RealmResults<Ratio> claims = RealmManager.shared.ratios(person, owesToPerson);
+        claims = RealmManager.shared.ratios(person, owesToPerson);
         claimsAdapter = new TitleValueAdapter(claims, new DebtsActivityDataSource());
         claimsList.setAdapter(claimsAdapter);
+
+        debts.addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
+            @Override
+            public void onChange(RealmResults<Ratio> results) {
+                setupTabs();
+            }
+        });
+
+        claims.addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
+            @Override
+            public void onChange(RealmResults<Ratio> results) {
+                setupTabs();
+            }
+        });
+
+        //setupTabs();
+    }
+
+    @Override
+    protected void onDestroy() {
+        debts.removeAllChangeListeners();
+        claims.removeAllChangeListeners();
+
+        super.onDestroy();
     }
 
     @Override
@@ -83,6 +114,13 @@ public class DebtsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    protected void setupTabs() {
+        TextView debts = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        debts.setText(person.getName() + " consumed " + String.format( "%.2f", person.consumedFrom(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
+        TextView claims = (TextView) tabHost.getTabWidget().getChildAt(1).findViewById(android.R.id.title);
+        claims.setText(person.getName() + " payed " + String.format( "%.2f", person.payedFor(owesToPerson)) + " " + AppSettings.shared.getReferenceCurrency().getCode());
     }
 }
 

@@ -14,6 +14,8 @@ class IsOwedViewController: UITableViewController {
     let person: Person
     let others: Results<Person>
     
+    var notificationTokens = [NotificationToken]()
+
     init(person: Person) {
         self.person = person
         self.others = RealmManager.shared.people(without: person)
@@ -31,6 +33,10 @@ class IsOwedViewController: UITableViewController {
         setupUI()
     }
     
+    deinit {
+        notificationTokens.forEach({ $0.stop() })
+    }
+
     // MARK: TableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,5 +75,13 @@ private extension IsOwedViewController {
         navigationItem.title = "Is owed to \(person.name)"
         
         tableView.register(NameValueCell.self, forCellReuseIdentifier: NameValueCell.reuseIdentifier)
+        
+        notificationTokens.append(person.items.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
+        
+        notificationTokens.append(person.ratios.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
     }
 }

@@ -14,6 +14,8 @@ class OwesViewController: UITableViewController {
     let person: Person
     let others: Results<Person>
     
+    var notificationTokens = [NotificationToken]()
+
     init(person: Person) {
         self.person = person
         self.others = RealmManager.shared.people(without: person)
@@ -29,6 +31,10 @@ class OwesViewController: UITableViewController {
         super.viewDidLoad()
 
         setupUI()
+    }
+    
+    deinit {
+        notificationTokens.forEach({ $0.stop() })
     }
 
     // MARK: TableView
@@ -69,6 +75,13 @@ private extension OwesViewController {
         navigationItem.title = "\(person.name) owes"
         
         tableView.register(NameValueCell.self, forCellReuseIdentifier: NameValueCell.reuseIdentifier)
-
+        
+        notificationTokens.append(person.items.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
+        
+        notificationTokens.append(person.ratios.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
     }
 }

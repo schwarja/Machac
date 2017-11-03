@@ -29,9 +29,10 @@ class TextFieldCell: UITableViewCell {
         setupUI()
     }
     
-    func configure(withPlaceholder placeholder: String?, text: String? = nil, valueChangedHandler: ((String) -> Void)? = nil) {
+    func configure(withPlaceholder placeholder: String?, text: String? = nil, keyboardType: UIKeyboardType, valueChangedHandler: ((String) -> Void)? = nil) {
         textField.placeholder = placeholder
         textField.text = text
+        textField.keyboardType = keyboardType
         self.valueChangedHandler = valueChangedHandler
     }
 

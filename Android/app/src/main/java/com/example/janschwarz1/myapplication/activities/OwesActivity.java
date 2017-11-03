@@ -14,18 +14,21 @@ import android.widget.ListView;
 import com.example.janschwarz1.myapplication.R;
 import com.example.janschwarz1.myapplication.models.Item;
 import com.example.janschwarz1.myapplication.models.Person;
+import com.example.janschwarz1.myapplication.models.Ratio;
 import com.example.janschwarz1.myapplication.models.TitleValueAdapterDataSource;
 import com.example.janschwarz1.myapplication.utils.RealmManager;
 import com.example.janschwarz1.myapplication.utils.TitleValueAdapter;
 
 import java.util.ArrayList;
 
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
 public class OwesActivity extends AppCompatActivity {
 
     public static String PERSON_ID = "com.example.janschwarz1.myapplication.activities.Owes.ID";
 
+    private RealmResults<Ratio> ownedRatios;
     private Person person;
     private ListView list;
     private TitleValueAdapter<Person> adapter;
@@ -59,6 +62,30 @@ public class OwesActivity extends AppCompatActivity {
             }
         });
 
+        person.getRatios().addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
+            @Override
+            public void onChange(RealmResults<Ratio> results) {
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        ownedRatios = RealmManager.shared.ratiosOwnedBy(person);
+
+        ownedRatios.addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
+            @Override
+            public void onChange(RealmResults<Ratio> results) {
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        person.getRatios().removeAllChangeListeners();
+        ownedRatios.removeAllChangeListeners();
+
+        super.onDestroy();
     }
 
     @Override

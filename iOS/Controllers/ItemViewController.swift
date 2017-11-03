@@ -78,14 +78,14 @@ class ItemViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let nameCell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath) as! TextFieldCell
-            nameCell.configure(withPlaceholder: "Item name", text: name, valueChangedHandler: { [weak self] newName in
+            nameCell.configure(withPlaceholder: "Item name", text: name, keyboardType: .default, valueChangedHandler: { [weak self] newName in
                 self?.name = newName
             })
             return nameCell
 
         case 1:
             let valueCell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath) as! TextFieldCell
-            valueCell.configure(withPlaceholder: "Item value", text: value == nil ? nil : "\(value ?? 0)", valueChangedHandler: { [weak self] newValue in
+            valueCell.configure(withPlaceholder: "Item value", text: value == nil ? nil : "\(value ?? 0)", keyboardType: .decimalPad, valueChangedHandler: { [weak self] newValue in
                 self?.value = Double(newValue) ?? 0
             })
             return valueCell

@@ -21,6 +21,7 @@ public class PersonActivity extends AppCompatActivity {
     public static String PERSON_ID = "com.example.janschwarz1.myapplication.activities.Person.ID";
 
     private Person person;
+    private RealmResults<Ratio> ownedRatios;
 
     private Button owesButton;
     private Button isOwedButton;
@@ -49,6 +50,15 @@ public class PersonActivity extends AppCompatActivity {
             }
         });
 
+        ownedRatios = RealmManager.shared.ratiosOwnedBy(person);
+
+        ownedRatios.addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
+            @Override
+            public void onChange(RealmResults<Ratio> results) {
+                setButtons();
+            }
+        });
+
         person.getRatios().addChangeListener(new RealmChangeListener<RealmResults<Ratio>>() {
             @Override
             public void onChange(RealmResults<Ratio> results) {
@@ -60,6 +70,8 @@ public class PersonActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         person.getItems().removeAllChangeListeners();
+        person.getRatios().removeAllChangeListeners();
+        ownedRatios.removeAllChangeListeners();
 
         super.onDestroy();
     }

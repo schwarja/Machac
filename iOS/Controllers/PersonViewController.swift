@@ -12,7 +12,7 @@ import RealmSwift
 class PersonViewController: UITableViewController {
     
     let person: Person
-    var notificationToken: NotificationToken?
+    var notificationTokens = [NotificationToken]()
 
     init(person: Person) {
         self.person = person
@@ -31,7 +31,7 @@ class PersonViewController: UITableViewController {
     }
     
     deinit {
-        notificationToken?.stop()
+        notificationTokens.forEach({ $0.stop() })
     }
 
     // MARK: - Table view data source
@@ -96,9 +96,13 @@ private extension PersonViewController {
         
         tableView.register(NameValueCell.self, forCellReuseIdentifier: NameValueCell.reuseIdentifier)
         
-        notificationToken = person.items.addNotificationBlock { [weak self] _ in
+        notificationTokens.append(person.items.addNotificationBlock { [weak self] _ in
             self?.tableView.reloadData()
-        }
+        })
+        
+        notificationTokens.append(person.ratios.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
     }
     
     @objc func export() {

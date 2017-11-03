@@ -17,6 +17,8 @@ class DebtsViewController: UITableViewController {
     let debts: Results<Ratio>
     let claims: Results<Ratio>
 
+    var notificationTokens = [NotificationToken]()
+
     init(claimer: Person, debtor: Person) {
         self.claimer = claimer
         self.debtor = debtor
@@ -36,6 +38,10 @@ class DebtsViewController: UITableViewController {
         setupUI()
     }
     
+    deinit {
+        notificationTokens.forEach({ $0.stop() })
+    }
+
     // MARK: TableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,6 +107,14 @@ private extension DebtsViewController {
         navigationItem.title = "\(debtor.name) owes to \(claimer.name)"
         
         tableView.register(NameValueCell.self, forCellReuseIdentifier: NameValueCell.reuseIdentifier)
+        
+        notificationTokens.append(claims.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
+        
+        notificationTokens.append(debts.addNotificationBlock { [weak self] _ in
+            self?.tableView.reloadData()
+        })
     }
 }
 
