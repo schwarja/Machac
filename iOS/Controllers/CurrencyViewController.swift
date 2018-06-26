@@ -61,12 +61,12 @@ class CurrencyViewController: UITableViewController {
             
         case 1:
             cell.configure(withPlaceholder: "\(Currency.defaultCode) value", text: czkValue == nil ? nil : "\(czkValue ?? 0)", keyboardType: .decimalPad, valueChangedHandler: { [weak self] newValue in
-                self?.czkValue = Double(newValue) ?? 0
+                self?.czkValue = NumberFormatter().number(from: newValue)?.doubleValue ?? 0
             })
             
         case 2:
             cell.configure(withPlaceholder: "New currency value", text: currencyValue == nil ? nil : "\(currencyValue ?? 0)", keyboardType: .decimalPad, valueChangedHandler: { [weak self] newValue in
-                self?.currencyValue = Double(newValue) ?? 0
+                self?.currencyValue = NumberFormatter().number(from: newValue)?.doubleValue ?? 0
             })
             
         default:

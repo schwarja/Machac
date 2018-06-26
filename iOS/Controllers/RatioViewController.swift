@@ -69,7 +69,7 @@ class RatioViewController: UITableViewController {
         case 1:
             let valueCell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath) as! TextFieldCell
             valueCell.configure(withPlaceholder: "Item ratio", text: value == nil ? nil : "\(value ?? 0)", keyboardType: .decimalPad, valueChangedHandler: { [weak self] newValue in
-                self?.value = Double(newValue) ?? 0
+                self?.value = NumberFormatter().number(from: newValue)?.doubleValue ?? 0
             })
             return valueCell
             
