@@ -10,20 +10,11 @@ import UIKit
 import SVProgressHUD
 
 class InitialViewController: UITableViewController {
+    var viewModel: InitialViewControllerModelProtocol!
+    var presenter: InitialViewControllerPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if RealmManager.shared.realm == nil {
-            NotificationCenter.default.addObserver(forName: Notification.Name("RealmInitialized"), object: nil, queue: nil, using: { [weak self] _ in
-                SVProgressHUD.dismiss()
-                self?.setupAppSetings()
-            })
-            SVProgressHUD.show()
-        }
-        else {
-            setupAppSetings()
-        }
         
         setupUI()
     }
@@ -51,15 +42,12 @@ class InitialViewController: UITableViewController {
     }
 }
 
+extension InitialViewController: InjectableViewControllerWithStoryboard {}
+
 private extension InitialViewController {
-    
     func setupUI() {
-        navigationItem.title = "Machac"
+        navigationItem.title = presenter.title
         
         tableView.delegate = self
-    }
-    
-    func setupAppSetings() {
-        AppSettings.shared.initialize()
     }
 }

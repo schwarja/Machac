@@ -33,7 +33,7 @@ class PickerViewCell<Value: Object>: UITableViewCell, UIPickerViewDelegate, UIPi
         return source?[picker.selectedRow(inComponent: 0)]
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupUI()

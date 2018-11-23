@@ -16,7 +16,7 @@ class TableViewCell<T: Object>: UITableViewCell, UITableViewDelegate, UITableVie
     
     private var source: [T] = []
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupUI()
@@ -90,7 +90,7 @@ class TableViewCell<T: Object>: UITableViewCell, UITableViewDelegate, UITableVie
         return indexPath.section == 1
     }
     
-    @objc func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    @objc func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let value = source[indexPath.row]
             removeItem(value)

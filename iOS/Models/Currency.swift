@@ -48,17 +48,17 @@ class Currency: Object {
 
 extension Currency: CascadeDelete {
     
-    func beforeDelete() {
-        let items = RealmManager.shared.items(inCurrency: self)
+    func beforeDelete(manager: RealmManager) {
+        let items = manager.items(inCurrency: self)
         var updatedObjects: [Object] = []
         
         for item in items {
             guard let owner = item.owner else {
                 continue
             }
-            let newValue = item.value
+            let newValue = item.value(with: manager.settings.referenceCurrency)
             
-            let updateItem = Item(name: item.name, owner: owner, valueInCurrency: newValue, currency: AppSettings.shared.referenceCurrency, id: item.id)
+            let updateItem = Item(name: item.name, owner: owner, valueInCurrency: newValue, currency: manager.settings.referenceCurrency, id: item.id)
             
             for ratio in item.ratios {
                 guard let debtor = ratio.debtor else {
@@ -72,7 +72,7 @@ extension Currency: CascadeDelete {
             updatedObjects.append(updateItem)
         }
         
-        updatedObjects.forEach({ RealmManager.shared.update(object: $0) })
+        updatedObjects.forEach({ manager.update(object: $0) })
     }
     
     func objectsToDelete() -> [Object] {

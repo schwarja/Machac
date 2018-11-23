@@ -18,10 +18,12 @@ class ItemViewController: UITableViewController {
     private var ratios: [Ratio]
     private var originalRatios: [Ratio]
     
-    let currencies = AppSettings.shared.currencies
+    var manager: RealmManager!
+    
+    let currencies: Results<Currency>
     
     private var name = ""
-    private var currency = AppSettings.shared.referenceCurrency
+    private var currency: Currency!
     private var value: Double?
     
     init(item: Item, shouldDismiss: Bool = false) {
@@ -29,7 +31,7 @@ class ItemViewController: UITableViewController {
         
         self.owner = item.owner!
         self.item = item
-        self.ratios = RealmManager.shared.ratios(ofItem: item)
+        self.ratios = manager.ratios(ofItem: item)
         self.originalRatios = ratios
         
         self.name = item.name
@@ -37,6 +39,7 @@ class ItemViewController: UITableViewController {
         if let currency = item.currency {
             self.currency = currency
         }
+        self.currencies = manager.currencies
         
         super.init(style: .grouped)
         
@@ -50,7 +53,8 @@ class ItemViewController: UITableViewController {
         self.item = Item()
         self.ratios = []
         self.originalRatios = []
-        
+        self.currencies = manager.currencies
+
         super.init(style: .grouped)
         
         setupUI()
@@ -211,7 +215,7 @@ private extension ItemViewController {
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.register(RatiosTableViewCell.self, forCellReuseIdentifier: RatiosTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 6010
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
     }
@@ -219,7 +223,7 @@ private extension ItemViewController {
     @objc func saveItem() {
         if let value = value, !name.isEmpty && value > 0 {
             let item = Item(name: name, owner: owner, valueInCurrency: value, currency: currency, id: self.item.id)
-            if let error = RealmManager.shared.update(object: item) {
+            if let error = manager.update(object: item) {
                 showMessage(error.localizedDescription)
             }
             else if let error = saveRatios(forItem: item) {
@@ -237,12 +241,12 @@ private extension ItemViewController {
     func saveRatios(forItem item: Item) -> Error? {
         for ratio in ratios {
             let updatedRatio = Ratio(item: item, debtor: ratio.debtor!, ratio: ratio.ratio, id: ratio.id)
-            if let error = RealmManager.shared.update(object: updatedRatio) {
+            if let error = manager.update(object: updatedRatio) {
                 return error
             }
         }
         for ratio in originalRatios where !ratios.contains(where: { $0.id == ratio.id}) {
-            RealmManager.shared.remove(object: ratio)
+            manager.remove(object: ratio)
         }
         
         return nil

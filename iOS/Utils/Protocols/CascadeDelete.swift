@@ -9,8 +9,13 @@
 import Foundation
 import RealmSwift
 
-@objc protocol CascadeDelete {
-    @objc optional func beforeDelete()
+protocol CascadeDelete {
+    func beforeDelete(manager: RealmManager)
     func objectsToDelete() -> [Object]
-    @objc optional func afterDelete()
+    func afterDelete()
+}
+
+extension CascadeDelete {
+    func beforeDelete(manager: RealmManager) {}
+    func afterDelete() {}
 }

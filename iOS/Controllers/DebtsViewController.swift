@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class DebtsViewController: UITableViewController {
+    var manager: RealmManager!
     
     let claimer: Person
     let debtor: Person
@@ -22,8 +23,8 @@ class DebtsViewController: UITableViewController {
     init(claimer: Person, debtor: Person) {
         self.claimer = claimer
         self.debtor = debtor
-        self.claims = RealmManager.shared.ratios(ownedBy: claimer, consumedBy: debtor)
-        self.debts = RealmManager.shared.ratios(ownedBy: debtor, consumedBy: claimer)
+        self.claims = manager.ratios(ownedBy: claimer, consumedBy: debtor)
+        self.debts = manager.ratios(ownedBy: debtor, consumedBy: claimer)
 
         super.init(style: .grouped)
     }
@@ -78,15 +79,15 @@ class DebtsViewController: UITableViewController {
         }
         cell.textLabel?.text = ratio.item?.name
         
-        let currency = AppSettings.shared.referenceCurrency
-        let owes = ratio.ratio * (ratio.item?.value ?? 0)
+        let currency = manager.settings.referenceCurrency
+        let owes = ratio.ratio * (ratio.item?.value(with: currency) ?? 0)
         cell.detailTextLabel?.text = "\(String(format: "%.2f", owes)) \(currency.code)"
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let currency = AppSettings.shared.referenceCurrency
+        let currency = manager.settings.referenceCurrency
         switch section {
         case 0:
             return "\(debtor.name) consumed \(String(format: "%.2f", debtor.consumedFrom(person: claimer))) \(currency.code)"

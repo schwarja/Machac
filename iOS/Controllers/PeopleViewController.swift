@@ -10,13 +10,16 @@ import UIKit
 import RealmSwift
 
 class PeopleViewController: UITableViewController {
+    var manager: RealmManager!
 
-    let people = RealmManager.shared.people
+    let people: Results<Person>
     var notificationToken: NotificationToken?
     
     private var nameTextField: UITextField?
     
     init() {
+        self.people = manager.people
+        
         super.init(style: .grouped)
     }
     
@@ -58,10 +61,10 @@ class PeopleViewController: UITableViewController {
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let person = people[indexPath.row]
-            RealmManager.shared.remove(object: person)
+            manager.remove(object: person)
         }
     }
 
@@ -105,7 +108,7 @@ private extension PeopleViewController {
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
             if let name = self.nameTextField?.text {
                 let person = Person(name: name)
-                RealmManager.shared.insert(object: person)
+                self.manager.insert(object: person)
             }
             self.nameTextField = nil
         }))

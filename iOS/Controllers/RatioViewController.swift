@@ -14,7 +14,8 @@ protocol RatioViewControllerDelegate: class {
 }
 
 class RatioViewController: UITableViewController {
-    
+    var manager: RealmManager!
+
     let item: Item
     let ratio: Ratio?
     let people: Results<Person>
@@ -28,7 +29,7 @@ class RatioViewController: UITableViewController {
         self.item = item
         self.ratio = ratio
         self.delegate = delegate
-        self.people = RealmManager.shared.people(without: omitPeople)
+        self.people = manager.people(without: omitPeople)
         
         super.init(style: .grouped)
         
@@ -113,7 +114,7 @@ private extension RatioViewController {
         tableView.register(PersonPickerCell.self, forCellReuseIdentifier: PersonPickerCell.reuseIdentifier)
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
     }
     

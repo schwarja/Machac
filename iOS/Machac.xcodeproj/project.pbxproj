@@ -9,6 +9,21 @@
 /* Begin PBXBuildFile section */
 		0E22EBA44E0BA015FB260F3A /* Pods_Machac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045BEA563C79C8A024BDF18A /* Pods_Machac.framework */; };
 		C11216BD1F992FD300C20286 /* CascadeDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11216BC1F992FD300C20286 /* CascadeDelete.swift */; };
+		C1657BF9219B286B00A48916 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657BF8219B286B00A48916 /* RootCoordinator.swift */; };
+		C1657BFB219B28AA00A48916 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657BFA219B28AA00A48916 /* CoordinatorProtocol.swift */; };
+		C1657BFD219B292000A48916 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657BFC219B292000A48916 /* AppDependency.swift */; };
+		C1657BFF219B2BEA00A48916 /* DependencyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657BFE219B2BEA00A48916 /* DependencyProtocol.swift */; };
+		C1657C02219B301D00A48916 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C01219B301D00A48916 /* Constants.swift */; };
+		C1657C05219B35FD00A48916 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C04219B35FD00A48916 /* R.generated.swift */; };
+		C1657C07219B43F300A48916 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C06219B43F200A48916 /* InitialCoordinator.swift */; };
+		C1657C0C219B44FC00A48916 /* InjectableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C0B219B44FC00A48916 /* InjectableViewController.swift */; };
+		C1657C0E219B455600A48916 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C0D219B455600A48916 /* PresenterProtocol.swift */; };
+		C1657C10219B457E00A48916 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C0F219B457E00A48916 /* ViewModelProtocol.swift */; };
+		C1657C12219B460900A48916 /* CoordinatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C11219B460900A48916 /* CoordinatingNavigationController.swift */; };
+		C1657C14219B46BC00A48916 /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C13219B46BC00A48916 /* InitialNavigationController.swift */; };
+		C1657C16219B485F00A48916 /* InitialNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C15219B485F00A48916 /* InitialNavigationViewModel.swift */; };
+		C1657C18219B4A0000A48916 /* InitialViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C17219B4A0000A48916 /* InitialViewControllerPresenter.swift */; };
+		C1657C1A219B4A1D00A48916 /* InitialViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1657C19219B4A1D00A48916 /* InitialViewControllerModel.swift */; };
 		C1C879111F9620C2004FADBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C879101F9620C2004FADBC /* AppDelegate.swift */; };
 		C1C879131F9620C2004FADBC /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C879121F9620C2004FADBC /* PeopleViewController.swift */; };
 		C1C879181F9620C2004FADBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C879161F9620C2004FADBC /* Main.storyboard */; };
@@ -51,6 +66,21 @@
 		045BEA563C79C8A024BDF18A /* Pods_Machac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Machac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DC4CE70D169BF61B726F14 /* Pods-Machac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Machac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Machac/Pods-Machac.debug.xcconfig"; sourceTree = "<group>"; };
 		C11216BC1F992FD300C20286 /* CascadeDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CascadeDelete.swift; sourceTree = "<group>"; };
+		C1657BF8219B286B00A48916 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		C1657BFA219B28AA00A48916 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		C1657BFC219B292000A48916 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C1657BFE219B2BEA00A48916 /* DependencyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProtocol.swift; sourceTree = "<group>"; };
+		C1657C01219B301D00A48916 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1657C04219B35FD00A48916 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		C1657C06219B43F200A48916 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
+		C1657C0B219B44FC00A48916 /* InjectableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableViewController.swift; sourceTree = "<group>"; };
+		C1657C0D219B455600A48916 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
+		C1657C0F219B457E00A48916 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		C1657C11219B460900A48916 /* CoordinatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatingNavigationController.swift; sourceTree = "<group>"; };
+		C1657C13219B46BC00A48916 /* InitialNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
+		C1657C15219B485F00A48916 /* InitialNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNavigationViewModel.swift; sourceTree = "<group>"; };
+		C1657C17219B4A0000A48916 /* InitialViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewControllerPresenter.swift; sourceTree = "<group>"; };
+		C1657C19219B4A1D00A48916 /* InitialViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewControllerModel.swift; sourceTree = "<group>"; };
 		C1C8790D1F9620C2004FADBC /* Machac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C879101F9620C2004FADBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C879121F9620C2004FADBC /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
@@ -121,13 +151,51 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C1657BF5219B269C00A48916 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C1657C15219B485F00A48916 /* InitialNavigationViewModel.swift */,
+				C1657C19219B4A1D00A48916 /* InitialViewControllerModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C1657BF6219B26B400A48916 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C1657C17219B4A0000A48916 /* InitialViewControllerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C1657BF7219B283C00A48916 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C1657BF8219B286B00A48916 /* RootCoordinator.swift */,
+				C1657C06219B43F200A48916 /* InitialCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		C1657C00219B300200A48916 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C1657C01219B301D00A48916 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C1C879041F9620C1004FADBC = {
 			isa = PBXGroup;
 			children = (
 				C1C879101F9620C2004FADBC /* AppDelegate.swift */,
-				C1D592831F964F1600A0C189 /* Models */,
 				C1D592821F964F0100A0C189 /* Controllers */,
+				C1657BF7219B283C00A48916 /* Coordinators */,
+				C1D592881F96501400A0C189 /* Managers */,
+				C1D592831F964F1600A0C189 /* Models */,
+				C1657BF6219B26B400A48916 /* Presenter */,
 				C1C8790F1F9620C2004FADBC /* SupportingFiles */,
+				C1657BF5219B269C00A48916 /* ViewModels */,
 				C1D592841F964F3B00A0C189 /* Views */,
 				C1D592871F96500700A0C189 /* Utils */,
 				C1C8790E1F9620C2004FADBC /* Products */,
@@ -149,6 +217,7 @@
 			children = (
 				C1C879191F9620C2004FADBC /* Assets.xcassets */,
 				C1C8791E1F9620C2004FADBC /* Info.plist */,
+				C1657C04219B35FD00A48916 /* R.generated.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -169,6 +238,7 @@
 				C1FA6C061F9906DE008EF50C /* ItemOwnerViewController.swift */,
 				C1C879161F9620C2004FADBC /* Main.storyboard */,
 				C1D5929D1F97742800A0C189 /* InitialViewController.swift */,
+				C1657C13219B46BC00A48916 /* InitialNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,9 +273,9 @@
 		C1D592871F96500700A0C189 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C1657C00219B300200A48916 /* Helpers */,
 				C1D592A81F977FDC00A0C189 /* Protocols */,
 				C1D592A51F977E8C00A0C189 /* Extensions */,
-				C1D592881F96501400A0C189 /* Managers */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -216,6 +286,7 @@
 				C1D592891F96502700A0C189 /* RealmManager.swift */,
 				C1D592971F97624400A0C189 /* AppSettings.swift */,
 				C1FA6BFE1F98CAF7008EF50C /* ExportManager.swift */,
+				C1657BFC219B292000A48916 /* AppDependency.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -236,6 +307,12 @@
 			children = (
 				C1D592A91F977FFC00A0C189 /* ListableObject.swift */,
 				C11216BC1F992FD300C20286 /* CascadeDelete.swift */,
+				C1657BFA219B28AA00A48916 /* CoordinatorProtocol.swift */,
+				C1657C0D219B455600A48916 /* PresenterProtocol.swift */,
+				C1657C0F219B457E00A48916 /* ViewModelProtocol.swift */,
+				C1657BFE219B2BEA00A48916 /* DependencyProtocol.swift */,
+				C1657C0B219B44FC00A48916 /* InjectableViewController.swift */,
+				C1657C11219B460900A48916 /* CoordinatingNavigationController.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -248,6 +325,7 @@
 			buildConfigurationList = C1C879211F9620C2004FADBC /* Build configuration list for PBXNativeTarget "Machac" */;
 			buildPhases = (
 				CCCFDEA8798B3E28891F3617 /* [CP] Check Pods Manifest.lock */,
+				C1657C03219B35A400A48916 /* R.swift */,
 				C1C879091F9620C2004FADBC /* Sources */,
 				C1C8790A1F9620C2004FADBC /* Frameworks */,
 				C1C8790B1F9620C2004FADBC /* Resources */,
@@ -274,6 +352,7 @@
 				TargetAttributes = {
 					C1C8790C1F9620C2004FADBC = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -316,23 +395,49 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Machac/Pods-Machac-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Machac/Pods-Machac-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Machac/Pods-Machac-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Machac/Pods-Machac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C1657C03219B35A400A48916 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/SupportingFiles\"\n";
 		};
 		CCCFDEA8798B3E28891F3617 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -361,10 +466,12 @@
 			files = (
 				C1D592AC1F97807400A0C189 /* CurrencyPickerCell.swift in Sources */,
 				C1FA6C071F9906DE008EF50C /* ItemOwnerViewController.swift in Sources */,
+				C1657BFD219B292000A48916 /* AppDependency.swift in Sources */,
 				C1FA6BF31F979FE6008EF50C /* CurrencyViewController.swift in Sources */,
 				C1FA6BF51F97A460008EF50C /* UIViewControllerExtension.swift in Sources */,
 				C1FA6BFD1F989CE9008EF50C /* RatioViewController.swift in Sources */,
 				C11216BD1F992FD300C20286 /* CascadeDelete.swift in Sources */,
+				C1657C07219B43F300A48916 /* InitialCoordinator.swift in Sources */,
 				C1D592A01F97752A00A0C189 /* CurrenciesViewController.swift in Sources */,
 				C1D592B01F9782A500A0C189 /* UITableExtensions.swift in Sources */,
 				C1D5929C1F976A2B00A0C189 /* NameValueCell.swift in Sources */,
@@ -373,26 +480,39 @@
 				C1D5929E1F97742800A0C189 /* InitialViewController.swift in Sources */,
 				C1D5928C1F9746B600A0C189 /* PersonViewController.swift in Sources */,
 				C1D592AE1F97826500A0C189 /* TextFieldCell.swift in Sources */,
+				C1657C18219B4A0000A48916 /* InitialViewControllerPresenter.swift in Sources */,
+				C1657BFB219B28AA00A48916 /* CoordinatorProtocol.swift in Sources */,
+				C1657C16219B485F00A48916 /* InitialNavigationViewModel.swift in Sources */,
 				C1C879131F9620C2004FADBC /* PeopleViewController.swift in Sources */,
 				C1D592A71F977E9E00A0C189 /* UIViewExtension.swift in Sources */,
 				C1D5928A1F96502700A0C189 /* RealmManager.swift in Sources */,
 				C1FA6BF71F97C389008EF50C /* TableViewCell.swift in Sources */,
+				C1657C02219B301D00A48916 /* Constants.swift in Sources */,
 				C1D592861F964F5900A0C189 /* Person.swift in Sources */,
 				C1FA6BF11F97914D008EF50C /* PersonPickerCell.swift in Sources */,
+				C1657C14219B46BC00A48916 /* InitialNavigationController.swift in Sources */,
 				C1D592AA1F977FFC00A0C189 /* ListableObject.swift in Sources */,
+				C1657C12219B460900A48916 /* CoordinatingNavigationController.swift in Sources */,
 				C1D592941F975C5200A0C189 /* ItemsViewController.swift in Sources */,
 				C1D5928E1F97565A00A0C189 /* Item.swift in Sources */,
+				C1657C1A219B4A1D00A48916 /* InitialViewControllerModel.swift in Sources */,
 				C1D592961F975D4D00A0C189 /* OwesViewController.swift in Sources */,
+				C1657C05219B35FD00A48916 /* R.generated.swift in Sources */,
 				C1D592981F97624400A0C189 /* AppSettings.swift in Sources */,
+				C1657C0E219B455600A48916 /* PresenterProtocol.swift in Sources */,
 				C1FA6BFF1F98CAF7008EF50C /* ExportManager.swift in Sources */,
 				C1D592921F975A9A00A0C189 /* Ratio.swift in Sources */,
+				C1657BF9219B286B00A48916 /* RootCoordinator.swift in Sources */,
 				C1D592901F9758A900A0C189 /* Currency.swift in Sources */,
 				C1D592A21F977A5700A0C189 /* ItemViewController.swift in Sources */,
+				C1657BFF219B2BEA00A48916 /* DependencyProtocol.swift in Sources */,
 				C1FA6C011F98D337008EF50C /* ArrayExtension.swift in Sources */,
 				C1FA6BFB1F989247008EF50C /* RatiosTableViewCell.swift in Sources */,
 				C1C879111F9620C2004FADBC /* AppDelegate.swift in Sources */,
+				C1657C10219B457E00A48916 /* ViewModelProtocol.swift in Sources */,
 				C1FA6C051F9903B1008EF50C /* DebtsViewController.swift in Sources */,
 				C1D5929A1F9765DB00A0C189 /* IsOwedViewController.swift in Sources */,
+				C1657C0C219B44FC00A48916 /* InjectableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +660,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schwarja.Machac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -556,7 +676,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schwarja.Machac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

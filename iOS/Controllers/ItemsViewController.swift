@@ -10,7 +10,8 @@ import UIKit
 import RealmSwift
 
 class ItemsViewController: UITableViewController {
-    
+    var manager: RealmManager!
+
     let person: Person
     var notificationToken: NotificationToken?
     
@@ -58,10 +59,10 @@ class ItemsViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item = person.items[indexPath.row]
-            RealmManager.shared.remove(object: item)
+            manager.remove(object: item)
         }
     }
     

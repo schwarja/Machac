@@ -16,14 +16,16 @@ class Person: Object {
     let items = LinkingObjects(fromType: Item.self, property: "owner")
     let ratios = LinkingObjects(fromType: Ratio.self, property: "debtor")
     
+    var manager: RealmManager!
+    
     var owes: Double {
-        let people = RealmManager.shared.people(without: self)
+        let people = manager.people(without: self)
         let sum = people.map({ self.owesTo(person: $0) }).reduce(0, { $0 + $1 })
         return sum
     }
     
     var isOwedTo: Double {
-        let people = RealmManager.shared.people(without: self)
+        let people = manager.people(without: self)
         let sum = people.map({ self.wantsFrom(person: $0) }).reduce(0, { $0 + $1 })
         return sum
     }
@@ -64,14 +66,18 @@ class Person: Object {
     }
     
     func payedFor(person: Person) -> Double {
-        let claims = RealmManager.shared.ratios(ownedBy: self, consumedBy: person)
-        let plus = claims.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        let claims = manager.ratios(ownedBy: self, consumedBy: person)
+        let plus = claims
+            .map({ $0.ratio * ($0.item?.value(with: self.manager.settings.referenceCurrency) ?? 0) })
+            .reduce(0, { $0 + $1 })
         return plus
     }
     
     func consumedFrom(person: Person) -> Double {
-        let debts = RealmManager.shared.ratios(ownedBy: person, consumedBy: self)
-        let minus = debts.map({ $0.ratio * ($0.item?.value ?? 0) }).reduce(0, { $0 + $1 })
+        let debts = manager.ratios(ownedBy: person, consumedBy: self)
+        let minus = debts
+            .map({ $0.ratio * ($0.item?.value(with: self.manager.settings.referenceCurrency) ?? 0) })
+            .reduce(0, { $0 + $1 })
         return minus
     }
 }

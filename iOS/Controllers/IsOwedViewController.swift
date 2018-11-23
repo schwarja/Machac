@@ -10,7 +10,8 @@ import UIKit
 import RealmSwift
 
 class IsOwedViewController: UITableViewController {
-    
+    var manager: RealmManager!
+
     let person: Person
     let others: Results<Person>
     
@@ -18,7 +19,7 @@ class IsOwedViewController: UITableViewController {
 
     init(person: Person) {
         self.person = person
-        self.others = RealmManager.shared.people(without: person)
+        self.others = manager.people(without: person)
         
         super.init(style: .grouped)
     }
@@ -54,7 +55,7 @@ class IsOwedViewController: UITableViewController {
         let person = others[indexPath.row]
         cell.textLabel?.text = person.name
         
-        let currency = AppSettings.shared.referenceCurrency
+        let currency = manager.settings.referenceCurrency
         let owes = self.person.wantsFrom(person: person)
         cell.detailTextLabel?.text = "\(String(format: "%.2f", owes)) \(currency.code)"
         

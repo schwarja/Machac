@@ -9,7 +9,8 @@
 import UIKit
 
 class CurrencyViewController: UITableViewController {
-    
+    var manager: RealmManager!
+
     let currency: Currency?
     
     private var code: String?
@@ -111,7 +112,7 @@ private extension CurrencyViewController {
     @objc func saveCurrency() {
         if let code = code, let czkValue = czkValue, let currencyValue = currencyValue, !code.isEmpty && czkValue > 0 && currencyValue > 0 {
             let currency = Currency(code: code, relationToCzk: czkValue / currencyValue)
-            if let error = RealmManager.shared.update(object: currency) {
+            if let error = manager.update(object: currency) {
                 showMessage(error.localizedDescription)
             }
             else {

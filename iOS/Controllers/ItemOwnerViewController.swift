@@ -10,12 +10,15 @@ import UIKit
 import RealmSwift
 
 class ItemOwnerViewController: UITableViewController {
-    
-    let people = RealmManager.shared.people
+    var manager: RealmManager!
+
+    let people: Results<Person>
     
     private var owner: Person?
     
     init() {
+        self.people = manager.people
+        
         super.init(style: .grouped)
     }
     
@@ -87,7 +90,7 @@ private extension ItemOwnerViewController {
         
         tableView.register(PersonPickerCell.self, forCellReuseIdentifier: PersonPickerCell.reuseIdentifier)
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         
         owner = people.first

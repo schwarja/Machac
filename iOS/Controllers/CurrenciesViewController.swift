@@ -10,12 +10,14 @@ import UIKit
 import RealmSwift
 
 class CurrenciesViewController: UITableViewController {
-    
-    let currencies = RealmManager.shared.currencies
+    var manager: RealmManager!
+    let currencies: Results<Currency>
     
     var notificationToken: NotificationToken?
 
     init() {
+        self.currencies = manager.currencies
+        
         super.init(style: .grouped)
     }
     
@@ -59,10 +61,10 @@ class CurrenciesViewController: UITableViewController {
         return !currency.isDefault && !currency.isReference
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let currency = currencies[indexPath.row]
-            RealmManager.shared.remove(object: currency)
+            manager.remove(object: currency)
         }
     }
 

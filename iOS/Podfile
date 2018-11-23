@@ -11,5 +11,8 @@ target 'Machac' do
   pod 'RealmSwift', '~> 2.10.0'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManager'
+  pod 'Swinject'
+  pod 'RxSwift'
+  pod 'R.swift'
 
 end

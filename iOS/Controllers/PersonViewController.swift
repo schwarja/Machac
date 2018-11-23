@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class PersonViewController: UITableViewController {
+    var manager: RealmManager!
     
     let person: Person
     var notificationTokens = [NotificationToken]()
@@ -51,11 +52,11 @@ class PersonViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Owes"
-            cell.detailTextLabel?.text = "\(person.owes) \(AppSettings.shared.referenceCurrency.code)"
+            cell.detailTextLabel?.text = "\(person.owes) \(manager.settings.referenceCurrency.code)"
             
         case 1:
             cell.textLabel?.text = "Is owed to \(person.name)"
-            cell.detailTextLabel?.text = "\(person.isOwedTo) \(AppSettings.shared.referenceCurrency.code)"
+            cell.detailTextLabel?.text = "\(person.isOwedTo) \(manager.settings.referenceCurrency.code)"
 
         case 2:
             cell.textLabel?.text = "Items"
@@ -106,14 +107,14 @@ private extension PersonViewController {
     }
     
     @objc func export() {
-        do {
-            if let url = try ExportManager.shared.exportCosts(forPerson: person) {
-                let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                present(controller, animated: true, completion: nil)
-            }
-        }
-        catch let error {
-            showMessage(error.localizedDescription)
-        }
+//        do {
+//            if let url = try ExportManager.shared.exportCosts(forPerson: person) {
+//                let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+//                present(controller, animated: true, completion: nil)
+//            }
+//        }
+//        catch let error {
+//            showMessage(error.localizedDescription)
+//        }
     }
 }

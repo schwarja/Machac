@@ -18,14 +18,14 @@ class Item: Object {
     @objc dynamic var currency: Currency?
     let ratios = LinkingObjects(fromType: Ratio.self, property: "item")
     
-    var value: Double {
+    func value(with referenceCurrency: Currency) -> Double {
         let czkValue = valueInCurrency * (currency?.relationToCzk ?? 0)
 
-        if AppSettings.shared.referenceCurrency.isDefault {
+        if referenceCurrency.isDefault {
             return czkValue
         }
         else {
-            return czkValue / AppSettings.shared.referenceCurrency.relationToCzk
+            return czkValue / referenceCurrency.relationToCzk
         }
     }
     

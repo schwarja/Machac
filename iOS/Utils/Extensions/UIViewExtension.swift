@@ -10,13 +10,13 @@ import UIKit
 
 protocol LayoutSpecifier {
     
-    var layoutRelation: NSLayoutRelation { get }
+    var layoutRelation: NSLayoutConstraint.Relation { get }
     var layoutConstant: CGFloat { get }
 }
 
 extension Double: LayoutSpecifier {
     
-    var layoutRelation: NSLayoutRelation {
+    var layoutRelation: NSLayoutConstraint.Relation {
         return .equal
     }
     
@@ -27,7 +27,7 @@ extension Double: LayoutSpecifier {
 
 extension CGFloat: LayoutSpecifier {
     
-    var layoutRelation: NSLayoutRelation {
+    var layoutRelation: NSLayoutConstraint.Relation {
         return .equal
     }
     
@@ -38,7 +38,7 @@ extension CGFloat: LayoutSpecifier {
 
 extension Int: LayoutSpecifier {
     
-    var layoutRelation: NSLayoutRelation {
+    var layoutRelation: NSLayoutConstraint.Relation {
         return .equal
     }
     
@@ -70,7 +70,7 @@ extension String: LayoutSpecifier {
         }
     }
     
-    var layoutRelation: NSLayoutRelation {
+    var layoutRelation: NSLayoutConstraint.Relation {
         if hasPrefix(">=") {
             return .greaterThanOrEqual
         }
